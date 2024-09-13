@@ -1,0 +1,5 @@
+# config.py
+
+CLIENT_ID = '43ea1167c7314df7add1478d764a754b'
+CLIENT_SECRET = 'bc056e4e02074cc495f4ad8b45fe4647'
+REDIRECT_URI = 'http://localhost:8501/'
