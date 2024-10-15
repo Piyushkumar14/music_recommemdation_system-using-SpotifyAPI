@@ -13,7 +13,7 @@ def main():
     processed_features, scaler = preprocess_features(audio_features)
 
     # Step 3: Recommendation
-    recommendations = recommend_tracks(processed_features, top_tracks)
+    recommendations = recommend_tracks(processed_features)
 
     # Step 4: Run Web Application
     run_app(recommendations, scaler)

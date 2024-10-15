@@ -33,4 +33,5 @@ def get_audio_features(track_ids):
     sp = get_spotify_client()
     features = sp.audio_features(track_ids)
     feature_names = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms']
+    # print([{name: feature[name] for name in feature_names} for feature in features if feature])
     return [{name: feature[name] for name in feature_names} for feature in features if feature]
