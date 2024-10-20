@@ -42,19 +42,14 @@ def run_app(recommendations, scaler, track_ids):
 
 if __name__ == "__main__":
     # Example of how to fit the model and scaler outside the function
-    example_features = pd.DataFrame({
-        'danceability': [0.5, 0.6, 0.7, 0.8, 0.9],
-        'energy': [0.5, 0.6, 0.7, 0.8, 0.9],
-        'key': [5, 6, 7, 8, 9],
-        'loudness': [-5.0, -6.0, -7.0, -8.0, -9.0],
-        'speechiness': [0.05, 0.06, 0.07, 0.08, 0.09],
-        'acousticness': [0.1, 0.2, 0.3, 0.4, 0.5],
-        'instrumentalness': [0.0, 0.1, 0.2, 0.3, 0.4],
-        'liveness': [0.1, 0.2, 0.3, 0.4, 0.5],
-        'valence': [0.5, 0.6, 0.7, 0.8, 0.9],
-        'tempo': [120.0, 130.0, 140.0, 150.0, 160.0]
-    })
-    track_ids = get_user_top_tracks()  # Replace with actual track IDs
+    track_ids = get_user_top_tracks()
+    features = get_audio_features(track_ids)
+    example_features = pd.DataFrame(features)
+
+    required_features = ['danceability', 'energy', 'key', 'loudness', 'speechiness', 'acousticness',
+                         'instrumentalness', 'liveness', 'valence', 'tempo']
+    example_features = example_features[required_features]
+     # Replace with actual track IDs
     scaler = StandardScaler()
     features_scaled = scaler.fit_transform(example_features)
     recommendations = NearestNeighbors(n_neighbors=5, algorithm='auto')

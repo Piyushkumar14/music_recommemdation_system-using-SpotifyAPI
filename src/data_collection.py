@@ -25,7 +25,7 @@ def get_spotify_client():
 
 def get_user_top_tracks():
     sp = get_spotify_client()
-    top_tracks = sp.current_user_top_tracks(limit=20)
+    top_tracks = sp.current_user_top_tracks(limit=50)
     return [track['id'] for track in top_tracks['items']]
 
 
